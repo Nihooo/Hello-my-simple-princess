@@ -1,0 +1,94 @@
+s1={"123","456"}
+print(type(s1))
+
+
+s1=set([11,22,33])
+print(s1)
+
+
+v=[11,22,11,22]
+s1=set(v)
+print(s1)
+
+
+s=set()
+print(s)
+s.add(123)————————添加
+print(s)
+c=s.copy()————————复制
+print(c)
+s.clear()—————————清除
+
+print(s)
+
+
+s1={11,22,33}
+s2={22,33,44}
+s3=s1.difference(s2)————————s1中have，s2中不存在
+print(s3)
+
+
+s1={11,22,33}
+s2={22,33,44}
+s3=s1.symmetric_difference(s2)————————s1,s2中相同的拿去，不同的留下
+print(s3)
+
+
+s1={11,22,33}
+s2={22,33,44}
+s1.difference_update(s2)————————将s1中存在的,s2中不存在的更新到s1中
+print(s1)
+
+
+s1={11,22,33}
+s1.discard(11)—————————删除指定元素，不存在时不报错
+print(s1)
+
+
+s1={11,22,33}
+s1.remove(11)————————删除指定元素，不存在报错
+print(s1)
+
+
+s1={11,22,33}
+s2={22,33,44}
+s3=s1.intersection(s2)————————s1,s2的交集
+print(s3)
+
+
+s1={11,22,33}
+s2={22,33,44}
+s3=s1.union(s2)————————s1,s2的 并集
+print(s3)
+
+
+s1={11,22,33}
+v='lowatolowato'—————————还可是列表， 元组
+s1.update(v)
+print(s1)
+》》》》》
+{33, 'a', 11, 'l', 't', 'o', 22, 'w'}
+
+
+old_dict={
+    '*1':8,
+    '*2':4,
+    '*4':2
+}
+new_dict={
+    '*1':4,
+    '*2':4,
+    '*3':2
+}
+old_set=set(old_dict)
+new_set=set(new_dict)
+remove_set=old_set.difference(new_set)
+print(remove_set)
+add_set=new_set.difference(old_set)
+print(add_set)
+update_set=old_set.intersection(new_set)
+print(update_set)
+》》》》》
+{'*4'}
+{'*3'}
+{'*1', '*2'}
