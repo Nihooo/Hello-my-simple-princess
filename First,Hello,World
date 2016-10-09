@@ -21,3 +21,129 @@ user_input=input("input your name:")
 print("user input msg:",user_input)
 
 
+name=input("input your name:")
+age=int(input("input your age:"))
+job=input("input your job:")
+msg='''
+Information of user %s:
+---------------------------
+Name:%s
+Age:%s
+Job:%s
+-------------END-----------
+'''%(name,name,age,job)
+print(msg)
+》》》》》
+input your name:LOWATO
+input your age:23
+input your job:IT
+
+Information of user LOWATO:
+---------------------------
+Name:LOWATO
+Age:23
+Job:IT
+-------------END-----------
+
+
+导入模块import
+import getpass
+username=input("username:")
+password=getpass.getpass("password:")——————————密码输入时为密文
+print(username,password)
+
+
+user='lowato'
+passwd='lowa123'
+username=input("username:")
+password=input("password:")
+if user==username:
+    if password==passwd:
+        print("welcome login...")
+    else:
+        print("password is invalid")
+else:
+    print("username is invalid")
+    
+    
+user='lowato'
+passwd='lowa123'
+username=input("username:")
+password=input("password:")
+if user==username and passwd==password:
+    print("welcome login...")
+else:
+    print("Invalid username or password")
+
+
+age=22
+guess_num=int(input("input your guess number:"))
+if guess_num==age:
+    print("congratulations!")
+elif guess_num>age:
+    print("too big!!!")
+else:
+    print("too small!!!")
+
+
+age=22
+for i in range(10):
+    if i<3:
+        guess_number=int(input("please input your guess number:"))
+        if guess_number==age:
+            print("congratulations!!!")
+        elif guess_number<age:
+            print("too small!!!")
+        else:
+            print("too big!!!")
+    else:
+        print("too many attempts...bye")
+        break
+
+
+age=22
+counter=0
+for i in range(10):
+    if counter<3:
+        guess_number=int(input("please input your guess number:"))
+        if guess_number==age:
+            print("congratulations!!!")
+            break
+        elif guess_number<age:
+            print("too small!!!")
+        else:
+            print("too big!!!")
+    else:
+        continue_confirm=input("Do you want continue?Yes or No:")
+        if continue_confirm=="Yes":
+            counter=0
+            continue
+        else:
+            print("GoodBye")
+            break
+    counter+=1
+
+
+user='lowato'
+passwd='lowa123'
+简化>>>user,passwd='lowato','lowa123'
+
+
+c=2**31
+print(c)
+
+
+c=0==Ture
+print(c)
+》》》》》False
+
+
+c=0==False
+print(c)
+》》》》》True
+
+
+字符串格式化输出：
+name='lowato'
+print("I am %s"%name)
+》》》》》I am lowato
