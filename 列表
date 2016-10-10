@@ -160,6 +160,12 @@ name2=name.copy()
 print(name2)
 
 
+name=['python','c','java','c++','c#']
+print('name',len(name))—————————查看name的长度
+》》》》》
+name 5
+
+
 列表：r=[11,22,33]
 元组: v=(11,22,33)————————————元组只能用count和index
 
