@@ -1,0 +1,172 @@
+name=['python','c','java','c++','c#']
+  print(name)
+》》》》》
+['python', 'c', 'java', 'c++', 'c#']
+
+
+name=['python','c','java','c++','c#']
+  print(name[2])
+  print(name[0])
+  print(name[-1])
+  print(name[-2])
+》》》》》
+java
+python
+c#
+c++
+
+
+name=['python','c','java','c++','c#']
+print(name[0:2])
+print(name[2:5])
+print(name[-3:-1])
+print(name[-3:])
+print(name[0:4][1:3][1][1])
+》》》》》
+['python', 'c']
+['java', 'c++', 'c#']
+['java', 'c++']
+['java', 'c++', 'c#']
+a
+
+
+name=['python','c','java','c++','c#']
+name[1]='Ruby'————————————修改
+print(name)
+》》》》》
+['python', 'Ruby', 'java', 'c++', 'c#']
+
+
+name=['python','c','java','c++','c#']
+name.insert(2,'PHP')————————————插入
+print(name)
+》》》》》
+['python', 'c', 'PHP', 'java', 'c++', 'c#']
+
+
+name=['python','c','java','c++','c#']
+name.append('PHP')————————————追加，添加到最后
+print(name)
+》》》》》
+['python', 'c', 'java', 'c++', 'c#', 'PHP']
+
+
+name=['python','c','java','c++','c#']
+name.remove('java')
+print(name)
+》》》》》
+['python', 'c', 'c++', 'c#']
+
+
+name=['python','c','java','c++','c#']
+name.insert(-1,'PHP')
+name.insert(2,'Ruby')
+name2=name[1:5]
+print(name)
+print(name2)
+del name[2:5]———————————del可多个删除，remove只能一个
+print(name)
+》》》》》
+['python', 'c', 'Ruby', 'java', 'c++', 'PHP', 'c#']
+['c', 'Ruby', 'java', 'c++']
+['python', 'c', 'PHP', 'c#']
+
+
+name=['python','c','java','c++','c#','Ruby','PHP']
+print(name[0:-1:2])————————2为步
+print(name[::2])
+》》》》》
+['python', 'java', 'c#']
+['python', 'java', 'c#', 'PHP']
+
+
+name=['python','c','java','c++','c#']
+print('python' in  name)——————————判断‘python’是否在name里，是为Ture，否为False
+》》》》
+True
+
+
+name=['python','c','java','c++','c#']
+if 'python' in name:
+  print("'python' is in name")
+    
+
+number=[11,22,55,7,56,25,45,1,11,46,11,23,11]
+if 11 in number:
+  num_of_ele=number.count(11)
+  print("[%s] of 11 is/are in number"%num_of_ele)
+》》》》》
+[4] of 11 is/are in number
+
+
+number=[11,22,55,7,56,25,45,1,11,46,11,23,11]
+if 11 in number:
+  num_of_ele=number.index(11)———————————找到第一个11所在位置
+  print(num_of_ele)
+  number[num_od_ele]=9999———————————将第一个11修改为9999
+  print(number)
+》》》》》
+0
+[9999, 22, 55, 7, 56, 25, 45, 1, 11, 46, 11, 23, 11]
+
+
+#将列表中的所有11改为9999：
+number=[11,22,55,7,56,25,45,1,11,46,11,23,11]
+num_of_ele=number.count(11)
+for i in range(number.count(11)):
+  if 11 in number:
+    num_of_ele=number.index(11)
+    number[num_of_ele]=9999
+    print(number)
+》》》》》
+[9999, 22, 55, 7, 56, 25, 45, 1, 11, 46, 11, 23, 11]
+[9999, 22, 55, 7, 56, 25, 45, 1, 9999, 46, 11, 23, 11]
+[9999, 22, 55, 7, 56, 25, 45, 1, 9999, 46, 9999, 23, 11]
+[9999, 22, 55, 7, 56, 25, 45, 1, 9999, 46, 9999, 23, 9999]
+
+
+name=['python','c','java','c++','c#']
+name2=['Ruby','PHP']
+name.extend(name2)——————————将name2列表合并到name列表中，放到列尾，此时name2列表依然存在
+print(name)
+》》》》》
+['python', 'c', 'java', 'c++', 'c#', 'Ruby', 'PHP']
+
+
+name=['python','c','java','c++','c#']
+name.reverse()————————————倒序
+print(name)
+》》》》》
+['c#', 'c++', 'java', 'c', 'python']
+
+
+name=['python','c','java','c++','c#']
+name.sort()——————————按ASCII的大小 ，同类进行排序
+print(name)
+》》》》
+['c', 'c#', 'c++', 'java', 'python']
+
+
+name=['python','c','java','c++','c#']
+name.pop(2)——————————指定删除，默认时从最后一个开始
+print(name)
+》》》》》
+['python', 'c', 'c++', 'c#']
+
+
+name=['python','c','java','c++','c#']
+name.copy()————————————复制列表
+name2=name.copy()
+print(name2)
+
+
+列表：r=[11,22,33]
+元组: v=(11,22,33)————————————元组只能用count和index
+
+r=[11,22,33]
+v=(11,22,33)
+print(type(r))
+print(type(v))
+》》》》》
+<class 'list'>
+<class 'tuple'>
