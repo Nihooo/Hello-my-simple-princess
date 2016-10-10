@@ -1,0 +1,57 @@
+def f1():
+  print(123)
+  return '111'——————————一 一旦执行return，函数执行过程立即终止
+  print(456)
+x=f1()
+print(x)
+》》》》》
+123
+111
+
+
+def f1():
+  print('xxxxxx')
+r=f1()
+print(r)
+》》》》》
+xxxxx
+None——————————无return时默认 返回为None
+
+
+def send(xx,yy,zz):
+  print('what are you:',xx,yy,zz)
+while True:
+  r=input('please input your name:')
+  result=send(r,'is','AI')
+  
+  
+def send(xx,content,yy='AI'):
+  print("what are you:",xx,content,yy)
+while True:
+  r=input("please input your name:")
+  result=send(r,'is')
+》》》》》
+what are you: lowato is AI
+
+
+def send(xx,content,yy='AI'):—————————yy为形式参数，只能放在参数列表的最后
+    print("what are you:",xx,content,yy)
+while True:
+    r=input("please input your name:")
+    result=send(r,'is'，'EI')
+》》》》》
+what are you: lowato is EI
+
+
+def send(xx,yy):
+  print(xx,'is',yy)
+send('lowato','AI')
+》》》》》
+lowato is AI
+
+
+def send(xx,yy):
+  print(xx,'is',yy)
+send(yy='lowato',xx='AI')————————指定函数
+》》》》
+AI is lowato
