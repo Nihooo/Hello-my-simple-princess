@@ -55,3 +55,133 @@ def send(xx,yy):
 send(yy='lowato',xx='AI')————————指定函数
 》》》》
 AI is lowato
+
+
+def f1(*args):————————————接收N个实际参数，类型为元组
+  print(args)
+f1(11,22,'lowato')
+》》》》》
+(11, 22, 'lowato')
+
+
+def f1(*args):
+  print(args)
+r=[11,22,'lowato']
+f1(r)—————————放入元组里，作为一个元素
+f1(*r)——————————将列表的每个元素转化为元组里
+》》》》》
+([11, 22, 'lowato'],)
+(11, 22, 'lowato')
+
+
+def f1(*args):
+  print(args)
+r='lowato'
+f1(r)
+f1(*r)
+》》》》
+('lowato',)
+('l', 'o', 'w', 'a', 't', 'o')
+
+
+def f1(**kwargs):——————————— 类型为字典
+  print(kwargs)
+f1(n1='lowato',n2=18)
+》》》》》
+{'n1': 'lowato', 'n2': 18}
+
+
+def f1(**kwargs):
+  print(kwargs)
+dic={'n1':'lowato','n2':'c'}
+f1(r=dic)
+f1(**dic)
+》》》》》
+{'r': {'n1': 'lowato', 'n2': 'c'}}
+{'n1': 'lowato', 'n2': 'c'}
+
+
+*————————默认将传入的参数，全部放置在元组
+**————————默认将传入的参数，全部放置在字典中
+
+
+def f1(*args,**kwargs):———————————只能*在前，**在后
+  print(args)
+  print(kwargs)
+f1(11,22,33,n1='python',n2='c')
+》》》》》
+(11, 22, 33)
+{'n1': 'python', 'n2': 'c'}
+
+
+s="I am {0},age {1}".format('lowato',18)
+print(s)
+s1="I am {0},age {1}".format(*['lowato',18])
+print(s1)
+》》》》》
+I am lowato,age 18
+I am lowato,age 18
+
+
+s="I am {name},age {age}".format(name='lowato',age=18)
+print(s)
+dic={'name':'lowato','age':18}
+s1="I am {name},age {age}".format(**dic)
+print(s1)
+》》》》》
+I am lowato,age 18
+I am lowato,age 18
+
+
+def f1(s):
+  s.append(999)—————————传递的为引用
+r=[11,22,33]
+f1(r)
+print(r)
+》》》》》》
+[11, 22, 33, 999]
+
+
+全局变量———————所有作用域都可读
+定义全局 变量 要大写
+对全局变量重新赋值需global
+
+NAME='messi'
+def f1():
+  NAME='lowato'——————————只改变局部域
+  print(NAME)
+def f2():
+  print(NAME)
+f1()
+f2()
+》》》》
+lowato
+messi
+
+
+NAME='messi'
+def f1():
+  global NAME——————————表示是全局变量
+  NAME='lowato'
+  print(NAME)
+def f2():
+  print(NAME)
+f1()
+f2()
+》》》》
+lowato
+lowato
+
+
+ 特殊：列表字典可修改，不可重新赋值
+R=[11,22,33]
+def f1():
+ R.append(999)
+ print(R)
+def f2():
+ print(R)
+f1()
+f2()
+》》》》》
+[11, 22, 33, 999]
+[11, 22, 33, 999]
