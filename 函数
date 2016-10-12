@@ -127,6 +127,7 @@ s="I am {name},age {age}".format(name='lowato',age=18)
 print(s)
 dic={'name':'lowato','age':18}
 s1="I am {name},age {age}".format(**dic)
+
 print(s1)
 》》》》》
 I am lowato,age 18
@@ -185,3 +186,68 @@ f2()
 》》》》》
 [11, 22, 33, 999]
 [11, 22, 33, 999]
+
+
+#内置函数
+abs————————绝对值函数
+n=abs(-1)
+print(n)
+》》》》》
+1
+
+
+#bool—————————  查询布尔值，True or  False
+print(bool(1))
+》》》》》
+True
+
+
+#all————————所有为真，才为真
+#any————————任一个为真，就为真
+n=all([11,22,33])
+print(n)
+》》》》》
+True
+
+n=any([11,0,None])
+print(n)
+》》》》》
+True
+
+
+#进制转换
+#bin—————————十进制转化为二进制
+#oct—————————十进制转化为八进制
+#hex—————————十进制转化为十六进制
+print(bin(5))
+print(oct(9))
+print(hex(15))
+》》》》》
+0b101
+0o11
+0xf
+
+
+#utf-8—————————1个汉字，3个字节
+#gbk—————————1个汉字，2个字节
+
+字符串转化为字节类型
+n=bytes('阿宝',encoding="utf-8")
+print(n)
+》》》》》
+b'\xe9\x98\xbf\xe5\xae\x9d'
+
+n=bytes('阿宝',encoding="gbk")
+print(n)
+》》》》》
+b'\xb0\xa2\xb1\xa6'
+
+字节转化为字符串类型
+str(bytes('阿宝',encoding="utf-8"),uft-8)
+
+
+
+
+
+
+
