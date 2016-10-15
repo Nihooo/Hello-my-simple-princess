@@ -246,8 +246,156 @@ b'\xb0\xa2\xb1\xa6'
 str(bytes('阿宝',encoding="utf-8"),uft-8)
 
 
+def f1():
+  pass
+print(callable(f1))———————————查询是否能被调用，能Ture，不能False
+》》》》》
+True
 
 
+r=chr(65)——————————ascii码转换，数字转为对应的字符串
+print(r)
+》》》》
+A
+
+n=ord('B')——————————ascii码转换，字符串转为对应的数字
+print(n)
+》》》》》
+66
 
 
+s='print(123)'
+r=compile(s,'<string>','exec')————————compile（）执行编译
+exec(r)
+
+
+s="8*8"——————————字符串
+ret=eval(s)——————————执行表达式，并获取结果
+print(ret)
+
+
+exec(s)—————————无返回值，执行python代码，或字符串，接收代码或字符串
+
+
+print(dir(list))——————————查看对象提供了哪些功能
+
+help(list)——————————查看对象提供了哪些功能,并有详细解释
+
+
+r=divmod(97,10)———————————97%10,并得到其商和余数
+print(r)
+print(r[0])
+》》》》
+(9,7)
+(9)
+
+n1,n2=divmod(97,10)
+print(n1)
+print(n2)
+》》》》》
+9
+7
+
+
+r="lowato"
+s=isinstance(r,str)—————————判断r是否是str的实例
+print(s)
+》》》》
+True
+
+r='lowato'
+s=ininstance(r,dict)
+print(s)
+》》》》》
+False
+
+
+#filter（函数，可迭代对象）—————————筛选符合条件的元素，函数返回True，将元素添加到结果中
+def f1(a):
+  if a>22:
+  return True
+r=[11,22,33,44,55]
+ret=filter(f1,r)
+print(list(ret)
+》》》》》
+[33, 44, 55]
+
+r=[11,22,33,44,55]
+result=filter(lambda a:a>33,r)
+print(list(result))
+》》》》》
+[44, 55]
+
+
+map(函数，可迭代对象(可for循环的东西))
+r=[11,22,33,44,55]
+def f1(a):
+  return a+100
+result=map(f1,r)
+print(list(result))
+》》》》》》
+[111, 122, 133, 144, 155]
+
+r=[11,22,33,44,55]
+result=map(lambda a:a+100 ,r)
+print(list(result))
+》》》》》
+[111, 122, 133, 144, 155]
+
+
+s="不不"
+print((lens))————————按字符进行查看
+》》》》》
+2
+
+s="不不"
+b=bytes(s,encoding='utf-8')———————————转化成字节
+print(len(b))
+》》》》》
+6
+
+
+r=max([11,22,33,1])
+print(r)
+》》》》》
+33
+
+r=min([11,22,33,1])
+print(r)
+》》》》》
+1
+
+r=sum([11,22,33,1])
+print(sum)
+》》》》》
+67
+
+
+r=round(1.8)
+print(r)
+》》》》》
+2
+
+r=round(1.4)
+print(r)
+》》》》》
+1
+
+
+s1=['lowato',11,22,33]
+s2=['is',11,22,33]
+s3=['AI',11,22,33]
+r=zip(s1,s2,s3)
+temp=list(r)[0]
+ret=" ".join(temp)
+print(temp)
+》》》》》
+lowato is AI
+
+s1=[11,22,33]
+s2=[11]
+r=zip(s1,s2)
+print(list(r))
+》》》》》
+[(11, 11)]
 
