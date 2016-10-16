@@ -1,0 +1,20 @@
+username=input("user:")
+if username.strip()=='alex'————strip()将输入的空格、Tab、换行去掉（移除空白）,（）内可指定
+  print(welcome)
+
+
+#分割
+nmae1="alex,jack,rain"
+name2=name1.split(",")——————————按逗号将其分割开
+print(name2)
+》》》》》
+['alex', 'jack', 'rain']
+
+
+#合并
+name1="alex,jack,rain"
+name2=name1.split(",")
+print(" ".join(name2))——————————用空格将列表合成字符串
+》》》》》
+alex jack rain
+
