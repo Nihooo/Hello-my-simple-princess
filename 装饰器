@@ -1,0 +1,48 @@
+#装饰器——————————在不改变函数内容的前提下，执行原函数不变的基础上，在其之前或之后，再额外统一地做一些操作
+def outer():
+  def inner():
+    pirnt('log')
+    return func()
+  return inner
+@outer
+def f1():
+  print('F1')
+@outer
+def f2():
+  print('F2')
+     .
+     .
+     .
+@outer
+def f100():
+  print('F100')
+f1()
+f2()
+f100()
+》》》》》
+log
+F1
+log
+F2
+log
+F100
+
+
+#必备知识
+def f1():
+  print(123)
+def f1():
+  print(456)
+f1()
+》》》》》
+456
+
+def f1():
+  print(123)
+def f2(arg):——————————这时arg指的是f1整体
+  arg()
+f2(f1)—————————f1不加()时，代指f1整个函数体
+》》》》》
+123
+
+
