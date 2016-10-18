@@ -1,0 +1,100 @@
+#python:模块   其它:类库
+
+#模块分类：内置模块;第三方模块;自定义模块.
+
+#先导入，后使用
+
+#import aaa.bbb(aaa为模块所在的文件夹名，无时可省略；bbb为模块名)
+
+#为什么要有模块？
+将代码归类
+
+#导入模块的依据？
+import sys
+sys.path
+
+import sys
+sys.path.append('E:\\')————————()里为模块所在的盘的位置
+
+
+#导入模块
+import s4
+s4.login()
+
+or
+
+from s4 import login
+login()
+
+
+import lib.commons
+lib.commons.f1()
+
+or
+
+from lib import commons
+commons.f1()
+
+
+from s4 import *——————————*为导入所有模块
+login()
+logout()
+
+
+#推荐：
+单模块:import
+嵌套在文件夹下:
+from xxx import xxx
+from xxx import xxx as(别名)
+
+
+#序列化
+
+#json
+
+import json
+dic={'k1':'v1'}
+print(dic,type(dic))
+result=json.dumps(dic))  #将python基本数据类型转化成字符串形式
+print(result,type(result))
+》》》》》
+{'k1': 'v1'} <class 'dict'>
+{"k1": "v1"} <class 'str'>
+
+
+s1='{"k1":123}'
+improt json
+dic=json.loads(s1)    #将python字符串形式转化成基本数据类型
+print(dic,type(dic))
+_______________
+{'k1': 123} <class 'dict'>
+
+
+import json
+r=[11,22,33]
+json.dump(r,open('文件名','w'))  #转化成字符串，并在一个文件里写入
+r=json.load(open('文件名','r'))  #转化成python基本数据类型,并从文件读出
+print(r)
+
+
+#pickle—————————只用于python
+
+import pickle
+r=[11,22,33]
+r.pickle.dumps(r)  #用法和json一样
+print(r)
+result=pcikle.loads(r)  #同上
+print(result)
+_______________
+b'\x80\x03]q\x00(K\x0bK\x16K!e.'
+[11, 22, 33]
+
+
+import pickle
+r=[11,22,33]
+pickle.dump(r,open('文件名','wb'))     #只支持字节形式
+result=pickle.load(open('文件名','rb'))
+print(result,type(result))
+
+json:更加适合跨语言，字符串，基本数据类型
+pickle:python所有类型的序列化做操作，但仅适用于python
