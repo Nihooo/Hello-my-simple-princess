@@ -46,3 +46,109 @@ f2(f1)—————————f1不加()时，代指f1整个函数体
 123
 
 
+def outer(func):
+  def inner():
+    print('log')
+    return func()
+  return inner
+@outer—————————# @+函数名，功能：1.自动执行outer函数，并且将其下面的函数名f1当作参数传递
+def f1():                       2.将outer函数的返回值重新赋值给f1
+  print(123)
+f1()
+_____________
+log
+123
+
+
+def outer(func):
+  def inner():
+    print("before")
+    func()
+    print("after")
+  return inner
+@outer
+def f1():
+  print("F1")
+f1()
+_____________
+before
+F1
+after
+
+
+定义函数，未调用，函数不执行
+函数名（不加（）），代替整个函数
+
+
+返回值
+def outer(func):
+  def inner():
+    print('before')
+    r=func()
+    print('after')
+    return r
+  return inner
+@outer
+def f1():
+  print("F1")
+  return "幼儿园"
+ret=f1()
+print(ret)
+_____________
+before
+F1
+after
+幼儿园
+  
+
+参数
+def outer(func):
+  def inner(a):
+    print('before')
+    r=func(a)
+    print('after')
+    return r
+  return inner
+@outer
+def f1(arg):
+  print(arg)
+  return "幼儿园"
+ret=f1('gogogo')
+print(ret)
+_____________
+before
+gogogo
+after
+幼儿园
+
+
+当原函数的参数个数不同时
+def outer(func):
+  def inner(*args,**kwargs):
+    print('before')
+    r=func(*args,**kwargs)
+    print('after')
+    return r
+  return inner
+@outer
+def f1(arg):
+  print(arg)
+  return "幼儿园"
+@outer
+def f2(a1,a2):
+  print('F2')
+ret=f1('gogogo') 
+print(ret)
+f2(11,22)
+_____________
+before
+gogogo
+after
+幼儿园
+before
+F2
+after
+
+
+双层装饰器（解释从下往上，执行从上而下）
+
