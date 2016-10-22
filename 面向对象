@@ -1,0 +1,73 @@
+python  函数式+面向对象
+
+类和对象
+1.创建类
+class 类名:
+  def 方法名(self,xxxx):   #传参数时，python自动为self传，不用管
+      pass
+      
+2.创建对象
+对象=类名()
+
+3.通过对象执行方法
+对象.方法名(123)
+
+
+class SQLHelper:
+  def fetch(self,sql):
+    print(self.hhost)
+    print(self.uuser)
+  def create(self,sql):
+    pass
+  def remove(self,id):
+    pass
+  def modify(self,name):
+    pass
+obj=SQLHelper()
+obj.hhost="ABC"
+obj.uuser="alex"
+obj.pwd="123"
+obj.fetch("select * from a")
+____________
+ABC
+alex
+
+
+4.什么时候用面向对象
+当某一些函数具有相同参数时，可以使用面向对象的方式，将参数值一次性的封装到对象，以后去对象中取值即可
+
+
+5.self是什么鬼？
+self是一个python自动会给传值的参数
+哪个对象执行方法，self就是谁
+obj1.fetch("select~~~")   self=obj1
+obj2.fetch("select~~~")   self=obj2
+
+
+6.构造方法
+类中有一个特殊的方法__init__,类() 自动被执行
+class SQLHelper:
+  def __init__(self,a1,a2,a3):
+    print("自动执行init")
+    self.hhost=a1
+    self.uuser=a2
+    self.pwd=a3
+    self.fetch("select * from A")
+  def fetch(self,sql):
+    print(sql)
+    print(self.hhost)
+  def create(self,sql):
+    pass
+  def remove(self,id): 
+    pass
+  def modify(self,name):
+    pass
+obj=SQLHelper('ABC','alex',123)
+_____________
+自动执行init
+select * from A
+ABC
+
+
+7.面向对象三大特性：封装、继承、多态
+  
