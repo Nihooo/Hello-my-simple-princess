@@ -1,3 +1,4 @@
+
 username=input("user:")
 if username.strip()=='alex'————strip()将输入的空格、Tab、换行去掉（移除空白）,（）内可指定
   print(welcome)
@@ -17,4 +18,94 @@ name2=name1.split(",")
 print(" ".join(name2))——————————用空格将列表合成字符串
 》》》》》
 alex jack rain
+
+
+name="alex x"
+print(" " in name)    #判断name里有没有空格
+______________
+True
+
+
+name="alex"
+ret=str(bytes(name,encoding="utf-8"),"utf-8")
+print(ret.capitalize())     #首字母大写
+_____________
+Alex
+
+
+字符串格式化
+msg="hello,{name},you are {age}."
+msg2=msg.format(name="google",age=18)
+print(msg2)
+____________
+hello,google,you are 18.
+
+or
+
+msg="hello {0},age {1}."
+print(msg.format("alex",33))
+_______________
+hello alex,age 33.
+
+
+切片
+name="alex xxx"
+print(name[2:4])
+__________
+ex
+
+
+name="alex xxxx"
+print(name.center(40,"-"))
+_______________
+---------------alex xxxx----------------
+
+
+name="alexx"
+print(name.find("e"))    #查找第一个x所在的位置
+____________
+2
+
+
+age=input("your age:")
+if age.isdigit():    #判断age是否为数字
+  age=int(age)
+else:
+  print("invalid data type")
+  
+  
+name="alex!xxx"
+print(name.isalnum())    #判断name中是否有特殊字符，有为False，无为True
+________________
+False
+
+
+name="lowato"
+print(name.endswith("to"))    #判断name中是否以()里的结尾，是为Ture，无为False
+_______________
+Ture
+
+
+name="lowato"
+print(name.startswith("to"))    #判断name中是否以()里的开头，是为Ture，无为False
+______________
+False
+
+
+name="lowato"
+print(name.upper())    #将name中的字符串整体大写
+print(name.lower())    #将name中的字符串整体小写
+____________
+LOWATO
+lowato
+
+
+二进制位的左移和右移(执行速度比除法快)
+r=64>>2        r=64>>1        r=64<<1         r=64<<2
+print(r)       print(r)       print(r)        print(r)          
+________       _________      _________       _________
+16             32             128             256
+
+
+
 
