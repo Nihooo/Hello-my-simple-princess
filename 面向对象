@@ -70,4 +70,208 @@ ABC
 
 
 7.面向对象三大特性：封装、继承、多态
-  
+
+
+class c1:
+  def __init__(self,name,obj):
+    self.name=name
+    self.obj=obj
+class c2:
+  def __init__(self,name,age):
+    self.name=name
+    self.age=age
+  def show(self):
+    print(self.name)
+class c3:
+  def __init__(self,a1):
+    self.money=123
+    self.aaa=a1
+c2_obj=c2("lowato",1)    #c2_obj是c2的类型 name="lowato" age=1
+c1_obj=c1("alex",c2_obj)    ##c1_obj是c1的类型 name="alex" obj=c2_obj
+c3_obj=c3(c1_obj)
+ret=c3_obj.aaa.obj.show()
+print(ret)
+_____________
+lowato
+None     #None为show的返回值
+
+c3_obj           c1_obj            c2_obj
+money=123        name="alex"       name="lowato"
+aaa=c1_obj       obj=c2_obj        age=1   
+ 
+
+继承
+
+class F1:    #F1为父类（基类）
+  def show(self):
+    print("show")
+class F2:    #F2继承F1,F2为子类（派生类）
+  def bar(self):
+    print("bar")
+  def show(self):
+    print("F2.show")
+obj=F2()
+obj.bar()
+obj.show()    #优先执行本身所存在的show()
+____________
+bar
+F2.show
+
+
+class s1:
+  def F1(self):
+    self.F2()
+  def F2(self):
+    pass
+class s2(s1):
+  def F3(self):
+    self.F1()
+  def F2(self):
+    pass
+obj=s2()
+obj.F3()
+#先执行s2里的F3()，当遇到self.F1()时，先去s2里寻找是否有F1()，若无，则去其继承的s1中寻找，当在s1中遇到self.F2()时，也需先在s2中寻找是否有F2()
+
+
+多继承(只有python支持)
+
+class c1:
+  def f1(self):
+    print("f1")
+class c2:
+  def f2(self):
+    print("f2")
+class c3(c2,c1):
+  def f3(self):
+    print("f3")
+obj=c3()
+obj.f2()
+_____________
+f2
+
+
+class c1:
+  def f2(self):
+    print("f1")
+class c2:
+  def f2(self):
+    print("f2")
+class c3(c1,c2):    #c1的优先级高于c2,因为c1括号中的位置在c2之前，所以去执行c1里的f2
+  def f3(self):
+    print("f3")
+obj=c3()
+obj.f2()
+______________
+f1
+
+
+class c0:
+  def f2(self):
+    print("c0")
+class c1(c0):                 #先找c3自己，若无，优先找c1，若无，再去找c0，若无，才去找c2
+  def f1(self):         
+    print("c1")
+class c2:   
+  def f2(self):
+    print("c2")
+class c3(c1,c2):
+  def f3(self):
+    print("c3")
+obj=c3()
+obj.f2()
+______________
+c0
+
+
+class c0:
+  def f2(self):
+    print("c0")
+class c1(c0):
+  def f1(self):
+    print("c1")
+class c2(c0):
+  def f1(self):
+    print("c2")
+class c3(c2):            #   先找c5自己，若无，优先找c3，若无，则去找c2，由于c2和c1存在同一父类c0，若无，就去找c4，若无，去找c1，若无，最后找c0
+  def f1(self):
+    print("c3")
+class c4(c1):
+  def f2(self):
+    print("c4")
+class c5(c3,c4):
+  def f3(self):
+    print("c5")
+obj=c5()
+obj.f2()
+____________
+c4
+
+
+多态(多种类型(字符串，列表，数字等))
+
+def func(arg):
+  print(arg)
+func(1)
+func("alex")
+func([11,22,33])
+
+
+面向对象中类成员：字段、方法、属性
+
+字段
+class foo:
+  cc=123    #字段(静态字段)，保存在类
+  def __init__(self):
+    self.name="alex"    #字段(普通字段或动态字段)，保存在对象
+  def show(self):
+    print(self.name)
+    
+
+class province:
+  country="中国"
+  def __init__(self,name):
+    self.name=name
+hn=province("河南")
+hb=province("河北")
+#一般情况：自己访问自己字段
+print(hn.name)
+print(province.country)
+#在python里，用对象也能访问类字段
+print(hn.country)
+
+规则：
+普通字段只能用对象访问
+静态字段用类访问(万不得已可以使用对象访问)
+
+静态字段在代码加载时已经创建
+class province:
+  country="中国"
+  def __init__(self,name):
+    self.name="alex"
+print(province.country)
+
+
+方法:
+class province:
+  country="中国"
+  def __init__(self,name):
+    self.name=name
+  def show(self):    #普通方法：由对象去调用执行(方法属于类)
+    print(self.name)
+obj=province("重庆")
+obj.show()
+
+  @staticmethod    #静态方法：由类调用执行，不需要self，可无参数
+  def f1(arg1,arg2):
+    print(arg1,arg2)
+province.f1(111,222)
+
+  @classmethod    #类方法，必有cls，调用时自动传递类名
+  def f2(cls):
+    print(cls)
+province.f2()
+
+方法：(所有方法属于类)
+1.普通方法：至少一个self，对象执行
+2.静态方法：任意参数，类执行
+3.类方法：至少一个cls，类执行
