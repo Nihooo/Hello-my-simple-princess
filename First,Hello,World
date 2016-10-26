@@ -53,6 +53,8 @@ password=getpass.getpass("password:")——————————密码输入�
 print(username,password)
 
 
+#if else
+
 user='lowato'
 passwd='lowa123'
 username=input("username:")
@@ -85,6 +87,8 @@ elif guess_num>age:
 else:
     print("too small!!!")
 
+
+#for循环
 
 age=22
 for i in range(10):
@@ -122,6 +126,45 @@ for i in range(10):
             print("GoodBye")
             break
     counter+=1
+    
+
+#while循环
+
+count=0
+while True:
+  print("stay hungry,stay foolish",count)
+  count+=1
+  if count==5:
+    print("good boy")
+    break
+_______________
+stay hungry,stay foolish 0
+stay hungry,stay foolish 1
+stay hungry,stay foolish 2
+stay hungry,stay foolish 3
+stay hungry,stay foolish 4
+good boy
+
+
+count=0
+while True:
+  count+=1
+  if count>5 and count<8:
+    continue
+  print("sb",count)
+  if count==10:
+    print("to you")
+    break
+__________________
+sb 1
+sb 2
+sb 3
+sb 4
+sb 5
+sb 8
+sb 9
+sb 10
+to you
 
 
 user='lowato'
