@@ -196,7 +196,7 @@ class c3(c2):            #   先找c5自己，若无，优先找c3，若无，�
   def f1(self):
     print("c3")
 class c4(c1):
-  def f2(self):
+:  def f2(self):
     print("c4")
 class c5(c3,c4):
   def f3(self):
@@ -275,3 +275,35 @@ province.f2()
 1.普通方法：至少一个self，对象执行
 2.静态方法：任意参数，类执行
 3.类方法：至少一个cls，类执行
+
+
+属性:具有方法的写作形式，具有字段的访问形式
+
+分页(用方法的形式)
+class pager:
+  def __init__(self,all_count):
+    self.all_count=all_count
+  def all_pager(self):
+    a1,a2=divmod(self.all_count,10)
+    if a2==0:
+      return a1
+    else:
+      return a1+1
+p=pager(101)
+result=p.all_pager()
+print(result)
+
+(用属性的形式)
+class pager:
+  def __init__(self,all_count):
+    self.all_count=self.count
+  @property
+  def all_pager(sellf):
+    a1,a2=divmod(self.all_count,10)
+    if a2==0:
+      return a1
+    else:
+      return a1+1
+p=pager(101)
+ret=p.all_pager
+print(ret)
