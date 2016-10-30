@@ -1,3 +1,4 @@
+
 #三元运算（三目运算）
 name='alex' if 1==1 else 'SB'
 print(name)
@@ -55,3 +56,49 @@ i am 123.43 %
 
 
 format形式
+
+r="aaa {0} bbb {0} aaa {1}".format(123,"alex")
+print(r)
+_________________
+aaa 123 bbb 123 aaa alex
+
+
+r="-----{name:s}_______{age:d}===={name:s}".format(name="alex",age=123)
+print(r)
+___________________
+-----alex_______123====alex
+
+
+r="-----{:*^10s}=====".format('alex')    # *表示不够位用*填充  ^表示居中  10表示10个字符  s表示字符串
+print(r)
+________________
+-----***alex***=====
+
+
+r="-----{:.2%}".format(0.234567)
+print(r)
+_________________
+-----23.46%
+
+
+r="i am {},age {},{}".format("seven",18,"alex")    # 单独的{}只表示占位
+print(r)
+___________________
+i am seven,age 18,alex
+
+
+r="i am {},age {},{}".format(*["seven",18,"alex"])    # *表示列表，**表示字典，无*会将整个列表放入1个元素里
+print(r)
+—————————————————
+i am seven,age 18,alex
+
+
+r="numbers:{0:b},{0:o},{0:d},{0:x},{0:X},{0:%}".format(15)
+print(r)
+____________________
+numbers:1111,17,15,f,F,1500.000000%
+
+
+
+
+
