@@ -68,6 +68,7 @@ improt json
 dic=json.loads(s1)    #将python字符串形式转化成基本数据类型
 print(dic,type(dic))
 _______________
+
 {'k1': 123} <class 'dict'>
 
 
@@ -76,6 +77,7 @@ r=[11,22,33]
 json.dump(r,open('文件名','w'))  #转化成字符串，并在一个文件里写入
 r=json.load(open('文件名','r'))  #转化成python基本数据类型,并从文件读出
 print(r)
+
 
 
 #pickle—————————只用于python
@@ -87,6 +89,7 @@ print(r)
 result=pcikle.loads(r)  #同上
 print(result)
 _______________
+
 b'\x80\x03]q\x00(K\x0bK\x16K!e.'
 [11, 22, 33]
 
@@ -146,3 +149,41 @@ time.sleep(4)    #运行后停留4秒再输出
 print(time.strftime("%Y-%m-%d %H:%M%S",time.gmtime()))    # 将struct_time格式转成指定的字符串格式
 ________________
 2016-10-30 12:1255
+
+
+print(time.strptime("2016-06-5 15:06","%Y-%m-%d %H:%M"))    # 将字符串转化成日期格式
+_________________
+time.struct_time(tm_year=2016, tm_mon=6, tm_mday=5, tm_hour=15, tm_min=26, tm_sec=0, tm_wday=6, tm_yday=157, tm_isdst=-1)
+
+
+import datetime
+
+print(datetime.date.today())    # 输出当前日期
+________________
+2016-10-30
+
+
+current_time=datetime.datetime.now()     # 输出当前时间
+print(current_time)
+___________________
+2016-10-30 20:24:02.127164
+
+
+print(datetime.datetime.now()+datetime.timedelta(days=10))    # 在现在时间的基础上加10天
+___________________
+2016-11-09 20:26:12.671852
+
+
+print(datetime.datetime.now()+datetime.timedelta(days=-10))    #在现在时间的基础上减10天
+___________________
+2016-10-20 20:28:23.799030
+
+
+print(current_time.replace(2015,5))    #替换
+___________________
+2015-05-30 20:29:56.881468
+
+
+str_to_date=datetime.datetime.strptime("21/11/2006 20:38","%d/%m/%Y %H:%M")    #将字符串转化成日期格式
+___________________
+2006-11-21 20:38:00
