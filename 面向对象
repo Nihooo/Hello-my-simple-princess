@@ -468,3 +468,179 @@ class foo:
 p=foo()
 
 
+class foo:
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+    def __getitem__(self, item):
+        return 123
+    def __setitem__(self, key, value):
+        print("setitem")
+    def __delitem__(self, key):
+        print("delitem")
+obj=foo("alex",23)
+ret=obj["aaa"]
+print(ret)
+obj["k1"]=111
+del obj["k1"]
+_____________
+123
+setitem
+delitem
+
+
+class foo:
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+    def __getitem__(self):
+        print(item,type(item))
+        print(item.start)
+        print(item.stop)
+        print(item.step)
+        return 123
+    def __setitem__(self,key,value):
+        print(key,value,type(key),type(value))
+    def __delitem__(self,key):
+        print(key,type(key))
+obj=foo("alex",23)
+ret=obj[1:4:2]
+obj[1:4]=[11,22,33,44]
+del obj[1:4]
+_______________
+slice(1, 4, 2) <class 'slice'>
+1
+4
+2
+slice(1, 4, None) [11, 22, 33, 44] <class 'slice'> <class 'list'>
+slice(1, 4, None) <class 'slice'>
+
+
+class bar:
+    pass
+class foo(bar):
+    pass
+obj=foo()
+ret=isinstance(obj,bar)    #查询obj是否是bar类型(为一个类的父类也可),Ture or False
+______________
+Ture
+
+class bar:
+    pass
+class foo(bar):
+    pass
+ret=issubclass(bar,foo)    #查询bar是否是foo的子类，Ture or False
+print(ret)
+______________
+False
+
+
+class c1:
+    def f1(self):
+        print("c1.f1")
+class c2(c1):
+    def f1(self):
+        super(c2,self).f1()    #主动执行父类的f1方法,self代表该类的父类    or    c1.f1(self)
+        print("c2.f1")
+obj=c2()
+obj.f1()
+_______________
+c1.f1
+c2.f1
+
+
+实例:有序字典
+class mydict(dict):
+    def __init__(self):
+        self.li=[]
+        super(mydict,self).__init__()
+    def __setitem__(self,key,value):
+        self.li.append(key)
+        super(mydict,self).__setitem__(key,value)
+    def __str__(self):
+        temp_list=[]
+        for key in self.li:
+            value=self.get(key)
+            temp_list.append("%s:%s"%(key,value))
+        temp_str="{"+",".join(temp_list)+"}"
+        return temp_str
+obj=mydict()
+obj["k1"]=123
+obj["k2"]=456
+print(obj)
+
+
+设计模式之单例模式
+单例模式：用来创建单个实例
+
+class foo:
+    instance=None
+    def __init__(self,name):
+        self.name=name
+    @classmethod
+    def get_instance(cls):
+        if cls.instance:
+            return cls.instance
+        else:
+            obj=cls("alex")
+            cls.instance=obj
+            return obj
+obj1=foo.get_instance()
+print(obj1)
+obj2=foo.get_instance()
+print(obj2)
+______________
+<__main__.foo object at 0x00B2B610>
+<__main__.foo object at 0x00B2B610>
+
+
+异常处理
+while Ture:
+    num1=input("num1:")
+    num2=input("num2:")
+    try:                       #try里有错时，执行except 
+        num1=int(num1)
+        num2=int(num2)
+        result=num1+num2
+    except Exception as ex:    #Exception能捕获所有类型的错误    ex为对象，封装了错误信息
+        print(ex)      
+______________________
+num1:123
+num2:456
+num1:123
+num2:kkk
+invalid literal for int() with base 10: 'kkk'
+
+try:                           # try里有错，执行except  无错，直接执行else
+    pass
+except ValueError as ex:       # 错误类型不匹配，继续下一个except
+    print(ex)
+except Exception as ex:        # Exception能捕获所有类型的错误
+    print(ex)
+else:
+    pass
+finally:                       # 有错无错都执行finally
+    pass
+
+
+主动错误
+try:
+    raise Exception("主动错误一下")
+    print(1234)
+except Exception as ex:
+    print(ex)
+______________
+主动错误一下
+
+
+断言
+assert 1==2    #满足继续执行，不满足报错
+print(123)
+
+assert 1==1
+print(123)
+____________
+123
+    
+
+
