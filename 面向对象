@@ -252,6 +252,7 @@ print(province.country)
 
 
 方法:
+
 class province:
   country="中国"
   def __init__(self,name):
@@ -307,3 +308,163 @@ class pager:
 p=pager(101)
 ret=p.all_pager
 print(ret)
+
+
+
+class inter:
+  @property
+  def aaa(self):
+    print("property")
+  @aaa.setter
+  def aaa(self,value):
+    print("setter")
+  @aaa.deleter
+  def aaa(self)
+    print("deleter")
+obj=inter()
+obj.aaa    # 自动执行 @property 修饰的 aaa 方法，并获取方法的返回值
+obj.aaa=123    # 自动执行 @aaa.setter 修饰的 aaa 方法，并将  123 赋值给方法的参数
+del obj.aaa    # 自动执行 @aaa.deleter 修饰的 aaa 方法
+#只有相应的格式，才会执行相应的方法，具体操作需自定义
+
+
+class inter:
+  def f1(self):
+    return 123
+  def f2(self,value):
+    print("456")
+  def f3(self):
+    print("789")
+  foo=property(fget=f1,fset=f2,fdel=f3)
+obj=inter()
+result=obj.foo
+print(result)
+obj.foo="alex"
+del obj.foo
+
+属性就是一种特殊的方法，用字段的形式去访问它，访问的时候它自动执行方法
+
+
+成员修饰符
+
+class foo:
+  def __init__(self,name):
+    self.name=name
+    def f1(self):
+      print(self.name)    #
+obj=foo("alex")
+print(obj.name)    #在内部和外部均能访问的就是公共的
+obj.f1()
+
+
+在字段前加两个下划线（__）就变为私有的，只能在类的内部进行访问，有继承关系也不行
+class foo:
+  def __init__(self,name):
+    self.__name=name
+  def f1(self):
+    print(self.__name)    #只能在内部访问
+obj=foo("alex")
+#print(obj.__name)    #会报错
+obj.f1()
+
+
+class foo:
+  __cc="123"
+  def __init__(self,name):
+    self.__name=name
+  def f1(self):
+    print(self.__name)
+    
+  def f2(self):
+    print(foo.__cc)    #静态字段也一样
+ obj=foo("alex")
+ obj.f2()
+ 
+ or
+ 
+  @staticmethod
+  def f2():
+    print(foo.__cc)
+foo.f2()    
+
+
+方法也一样
+def __f1(self)
+  pass
+  
+
+私有：只能类自己本身成员内部可以访问
+公有：所有都能
+
+print(obj._foo__name)    #这样可以在外部访问私有成员，不到万不得以不要使用
+
+
+特殊成员
+class foo:
+  def __init__(self):    #构造方法
+    print("__init__")
+  def __call__(self):
+    print("__call__")
+obj=foo()    or    foo()()
+obj()    #对象后加()，执行__call__方法
+_____________
+__init__
+__call__
+
+
+class foo:
+  def __init__(self,name,age):
+    self.name=name
+    self.age=age
+  def __str__(self):
+    return "%s-%d"%(self.name,self.age)
+obj1=foo("alex",22)
+obj2=foo("eric",25)
+print(obj1)    #若不用__str__，就会输出内存地址，自动调用
+print(obj2)
+_____________
+alex-22
+eric-25
+
+
+class foo:
+  def __init__(self,name,age):
+    self.name=name
+    self.age=age
+  def __add__(self,other):
+    temp="%s-%d"%(self.name,other.age)
+    return temp
+obj1=foo("alex",23)
+obj2=foo("eric",25)
+ret=obj1+obj2    #两个对象相加，自动执行__add__方法
+print(ret)
+____________
+alex-25
+
+
+class foo:
+  def __init__(self,name,age):
+    self.name=name
+    self.age=age
+obj=foo("alex",23)
+ret=obj.__dict__    #获取对象中封装的数据，用字典方式输出
+print(ret)
+
+
+class foo:
+  def __iter__(self):
+    yield 1    or    return iter([11,22,33])
+    yield 2
+obj=foo()
+for iter in obj:     #for循环自动执行__iter__方法
+  print(iter)
+
+
+class foo:
+  del __init__(self):
+    pass
+  del __del__(self):    #析构方法，在垃圾回收之前自动执行
+    pass
+p=foo()
+
+
