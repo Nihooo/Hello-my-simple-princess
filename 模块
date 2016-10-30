@@ -123,6 +123,7 @@ ________________
 Sat Oct 29 19:59:59 2016
 
 
+
 time_obj=time.gmtime()    # 将时间戳转化为struct_time格式
 print(time_obj)
 print(time_obj.tm_year,time_obj.tm_mon)
@@ -187,3 +188,33 @@ ___________________
 str_to_date=datetime.datetime.strptime("21/11/2006 20:38","%d/%m/%Y %H:%M")    #将字符串转化成日期格式
 ___________________
 2006-11-21 20:38:00
+
+
+
+反射
+
+import xxxxxx
+def run():
+    inp=input("请输入要访问的url:")
+    if hasattr(xxxxxx,inp):         #在xxxxxx模块里去检查所输入的函数名是否存在，True or False
+        func=getattr(xxxxxx,inp)    #去xxxxxx模块里找所输入的函数名
+        func()
+    else:
+        print('404')
+if __name__=='__main__':
+    run()
+
+delattr()    #去模块里删除某个成员
+setattr()    #去模块里设定（添加）某个成员
+
+
+obj=__import__("xxxxxx")    ==    import xxxxxx
+obj.login()                       xxxxxx.login()
+
+
+当要导入的模块在一个文件夹时
+obj=__import__("lib."+m,fromlist=Ture)    #lib.为文件夹名
+
+
+
+
