@@ -43,6 +43,7 @@ ____________
 2.46
 
 
+
 r="i am %(pp).2f"%{"pp":123.42556}
 print(r)
 _____________
@@ -99,6 +100,93 @@ ____________________
 numbers:1111,17,15,f,F,1500.000000%
 
 
+生成器
+函数里有yield就是生成器
 
+def func():
+    yield 1
+    yield 2
+    yield 3
+    yield 4
+ret=func()
+for i in ret:
+    print(i)
+___________________
+1
+2
+3
+4
+
+
+def func():
+    print(111)           #保存上一次执行的位置，下一次再执行的时候，从那继续往下走
+    yield 1
+    print(222)
+    yield 2
+    print(333)
+    yield 3
+ret=func()
+r1=ret.__next__()        #进入函数找到yield，获取yield后面的数据
+print(r1)
+r2=ret.__next__()
+print(r2)
+r3=ret.__next__()
+print(r3)
+__________________
+111
+1
+222
+2
+333
+3
+
+
+def myrange(arg):
+    start=0
+    while True:
+        if start>arg:
+            return
+        yield start
+        start+=1
+ret=myrange(3)
+r1=ret.__next__()
+print(r1)
+r2=ret.__next__()
+print(r2)
+r3=ret.__next__()
+print(r3)
+____________
+0
+1
+2
+
+
+递归
+def d():
+    return '123'
+def c():
+    r=d()
+    return r
+def b():
+    r=c()
+    return r
+def a():
+    r=b()
+    return r
+f=a()
+print(f)
+______________
+123
+
+
+def func(n):
+    n+=1
+    if n>=4:
+        return "end"
+    return func(n)    
+r=func(1)
+print(r)
+_______________
+end
 
 
