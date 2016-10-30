@@ -1,0 +1,121 @@
+id_db={
+    3281795:{
+        "name":"Alex xxx",
+        "age":22,
+        "addr":"shanghai"
+    },
+    4511798:{
+        "name":"aaaaa",
+        "age":24,
+        "addr":"tai bei"
+    },    
+}
+
+print(id_db[4511798])
+________________
+{'age': 24, 'addr': 'tai bei', 'name': 'aaaaa'}
+
+
+(援引上例)
+修改
+id_db[4511798]["name"]="mmmmmm"
+print(id_db[4511798])
+__________________
+{'addr': 'tai bei', 'age': 24, 'name': 'mmmmmm'}
+
+
+加新值
+id_db[4511798]["qq_of_yourself"]=6311
+print(id_db[4511798])
+____________________
+{'addr': 'tai bei', 'name': 'aaaaa', 'age': 24, 'qq_of_yourself': 6311}
+
+
+删除
+del id_db[4511798]['addr']    or    id_db[4511798].pop('addr')
+print(id_db[4511798])
+____________________
+{'age': 24, 'name': 'aaaaa'}
+
+
+获取
+r=id_db.get(4511798)    # 无时输出None
+r=id_db[4511798]        # 无时出错
+
+
+更新
+dic1={
+    123456:{
+        "name":"lowato",
+        "age":10,
+        "addr":"cina"
+    }
+}
+dic2={
+    123456:{
+        "name":"lowato",
+        "age":25,
+        "addr":"jp"
+    }
+}
+print(dic1)
+dic1.update(dic2)
+print(dic1)
+_______________
+{123456: {'name': 'lowato', 'age': 10, 'addr': 'cina'}}
+{123456: {'name': 'lowato', 'age': 25, 'addr': 'jp'}}
+
+
+id_db={
+    123456:{
+    "name":"lowato",
+    "age":10,
+    "addr":"cina"
+    }
+}
+print(id_db.values())
+___________________
+dict_values([{'age': 10, 'name': 'lowato', 'addr': 'cina'}])
+
+
+print(id_db.keys())
+___________________
+dict_keys([123456])
+
+
+ret=123456 in id_db    # 查询123456是否在id_db里，True or False
+print(ret)
+______________
+True
+
+
+print(id_db.setdefault(123456,"haha"))    # 根据key取出里面的内容
+_______________
+{'name': 'lowato', 'addr': 'cina', 'age': 10}
+
+print(id_db.setdefault(123457))    # 存在取出，不存在输出None
+_____________
+None
+
+print(id_db.setdefault(123457,"haha"))    # 可设置默认值
+_____________
+haha
+
+
+(不在援引范围内)
+print(dict.fromkeys([1,2,3,4,5],'ddddd'))    # 设置key名，values全部为ddddd
+_____________
+{1: 'ddddd', 2: 'ddddd', 3: 'ddddd', 4: 'ddddd', 5: 'ddddd'}
+
+
+字典循环
+
+for key in id_db:            # 效率高
+    print(key,id_db[key])
+________________
+123456 {'name': 'lowato', 'addr': 'cina', 'age': 10}
+
+for k,v in id_db.items():    # 效率低
+    print(k,v)
+________________
+123456 {'name': 'lowato', 'addr': 'cina', 'age': 10}
