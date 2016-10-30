@@ -16,3 +16,42 @@ print(r2)
 109
 
 
+常用格式化
+
+r="i am %s"%"alex"
+print(r)
+_____________
+i am alex
+
+
+r="i am %s,age %d"%("alex",18)
+print(r)
+____________
+i am alex,age 18
+
+
+r="i am %(name)s,age %(age)d"%{"name":"alex","age":18}
+print(r)
+_____________
+i am alex,age 18
+
+
+r="%.2f"%2.456654
+print(r)
+____________
+2.46
+
+
+r="i am %(pp).2f"%{"pp":123.42556}
+print(r)
+_____________
+i am 123.43
+
+
+r="i am %.2f %%"%123.42556
+print(r)
+_______________
+i am 123.43 %
+
+
+format形式
