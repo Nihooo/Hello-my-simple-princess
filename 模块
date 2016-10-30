@@ -30,6 +30,7 @@ login()
 import lib.commons
 lib.commons.f1()
 
+
 or
 
 from lib import commons
@@ -98,3 +99,50 @@ print(result,type(result))
 
 json:更加适合跨语言，字符串，基本数据类型
 pickle:python所有类型的序列化做操作，但仅适用于python
+
+
+time模块
+
+import time
+
+print(time.time())    # 返回当前系统时间戳
+________________
+1477828647.0775943
+
+
+print(time.ctime())    # 输出当前系统时间
+________________
+Sun Oct 30 19:58:42 2016
+
+
+print(time.ctime(time.time()-86400))    # 将时间戳转化为字符串格式
+________________
+Sat Oct 29 19:59:59 2016
+
+
+time_obj=time.gmtime()    # 将时间戳转化为struct_time格式
+print(time_obj)
+print(time_obj.tm_year,time_obj.tm_mon)
+print("{year}-{month}".format(year=time_obj.tm_year,month=time_obj.tm_mon))
+_____________________
+time.struct_time(tm_year=2016, tm_mon=10, tm_mday=30, tm_hour=12, tm_min=1, tm_sec=40, tm_wday=6, tm_yday=304, tm_isdst=0)
+2016 10
+2016-10
+
+
+print(time.localtime())    # 将格林威治时间转化为本地时间
+____________________
+time.struct_time(tm_year=2016, tm_mon=10, tm_mday=30, tm_hour=20, tm_min=7, tm_sec=28, tm_wday=6, tm_yday=304, tm_isdst=0)
+
+
+print(time.mktime(time_obj))    # 将struct_time格式转化为时间戳格式
+____________________
+1477800556.0
+
+
+time.sleep(4)    #运行后停留4秒再输出
+
+
+print(time.strftime("%Y-%m-%d %H:%M%S",time.gmtime()))    # 将struct_time格式转成指定的字符串格式
+________________
+2016-10-30 12:1255
