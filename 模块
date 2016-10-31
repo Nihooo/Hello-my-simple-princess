@@ -195,7 +195,7 @@ ___________________
 
 import xxxxxx
 def run():
-    inp=input("请输入要访问的url:")
+     inp=input("请输入要访问的url:")
     if hasattr(xxxxxx,inp):         #在xxxxxx模块里去检查所输入的函数名是否存在，True or False
         func=getattr(xxxxxx,inp)    #去xxxxxx模块里找所输入的函数名
         func()
@@ -216,5 +216,184 @@ obj.login()                       xxxxxx.login()
 obj=__import__("lib."+m,fromlist=Ture)    #lib.为文件夹名
 
 
+logging模块(日志管理)
+
+import logging
+logging.warning("user [alex] attempted wrong password more than 3 times")
+logging.critical("server is down")
+
+
+日志级别：
+debug:最详细的调试信息  10
+info:纪律  20
+warning:出现警告  30
+error:出错  40
+critical：严重  50
+
+
+将日志写入文件
+import logging
+logging.basicConfig(filename="123.log",level=logging.INFO)    # level为等级，logging.INFO表示只有该级别或该级别以上才写入
+logging.DEBUG("this message should go to the log file")
+logging.INFO("so should this")
+logging.WARNING("and this,too")
+
+                    
+import logging
+#create logger
+
+logger=logging.getLogger("test_log")     #get the logger object first
+logger.setLevel(logging.DEBUG)           #set a global log level
+
+#create console handler and set level to debug
+
+ch=logging.StreamHandler()    #print the log on monitor
+ch.setLevel(logging.DEBUG)    #set level to output in monitor
+
+#create file handler and set level to warning
+
+fh=logging.FileHandler("access_log")    
+fh.setLevel(logging.WARNING)     #set level to output in file
+
+#create formatter
+
+formatter=logging.Formatter("%(asctime)s-%(name)s-%(levelname)s-%(message)s")
+
+#add formatter to ch and fh
+
+ch.setFormatter(formatter)
+fh.setFormatter(formatter)
+
+#add ch and fh to logger
+
+logger.addHandler(ch)    #tell the logger to input the log into specified handler
+logger.addHandler(fh)
+
+#'application' code
+
+logger.debug("debug message")
+logger.info("info message")
+logger.warning("warn message")
+logger.error("error message")
+logger.critical("critical message")
+
+
+import s2
+print(vars(s2))    # 查看s2模块中有哪些变量
+
+
+'''
+我是注释
+'''
+print(__doc__)    # 获取注释
+
+
+print(__file__)    # 当前py文件所在的路径
+
+
+import sys
+import os
+os.path.abspath(__file__)                        # 获取某个文件的绝对路径
+os.path.dirname(os.path.abspath(__file__))       # 找到某个文件的上级目录
+ret=sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print(ret)
+
+
+print(__package_)    # 查询文件在哪个包里（是否有上级文件），无时输出None
+
+
+def run():
+        print("123")
+if __name__=="__main__":    # 只有在当前py文件里函数才会执行。被导入调用不会执行
+        run()
+        
+
+sys模块：模块用于提供对python解释器相关操作
+
+进度条
+
+import sys
+import time
+def view_bar(num,total):
+        rate=num/total
+        rate_num=int(rate*100)
+        r='\r%d%%'%(rate_num)    # \r表示重新回到当前行的首个位置
+        #print(r)      # 输出时会自动换行
+        sys.stdout.write(r)    # 输出时不加换行符
+        sys.stdout.flush()     # 输出清空
+if __name__=="__main__":
+        for i in range(0,101):
+                time.sleep(0.1)
+                view_bar(i,100)
+                
+import sys
+import time
+def view_bar(num,total):
+        rate=num/total
+        rate_num=int(rate*100)
+        r1='\r%s>%d%%'%("="*num,rate_num)
+        sys.stdout.write(r1)
+        sys.stdout.flush()
+if __name__=="__main__":
+        for i in range(0,101):
+                time.sleep(0.1)
+                view_bar(i,100)        
+
+
+os模块:模块用于提供系统级别的操作
+
+os.path.join(path1[,path2[,···]])    # 路径拼接
+os.path.join(settings.user,card,xman)    # 将这3个目录从左到右连接
+
+
+hashlib:用于执行加密操作
+
+import hashlib
+obj=hashlib.md5()
+obj.update(bytes('123',encoding='utf-8'))
+result=obj.hexdigest()
+print(result)
+_____________________
+202cb962ac59075b964b07152d234b70
+
+
+正则表达式
+re模块
+
+import re
+r=re.findall("alex","subwayalexdebug")    # 查找'alex'是否在其中，有返回['alex']，无返回[]
+print(r)
+______________________
+['alex']
+
+
+2元字符: .  ^  $  *  +  ?  {}  []  |  ()  \  ···
+
+import re
+
+r=re.findall('al.x',"subwayalexdebug")    # . 代表一个字符
+print(r)
+_______________________
+['alex']
+
+
+import re
+r=re.findall('^alex','subwayalexdebug')    #查询想要查询的字符是否在起始位（开头）
+r=re.findall('alex$,'subwayalexdebug')     #查询想要查询的字符是否在最后面
+print(r)
+_______________________
+[]
+
+
+import re
+r=re.findall('al.+x','subwayaledebugx')      # .+ 代表1到多个字符
+r=re.findall('al.*x','subwayaledebugx')      # .* 代表0到多个字符
+r=re.findall('al.？x','subwayaledebugx')     # .? 代表1个或0个（没有）
+r=re.findall('al(3)x','subwayaledebugx')     # .(3) 可代表3个字符
+print(r)
+__________________________
+['aledebugx']
+['aledebugx']
+[]
 
 
