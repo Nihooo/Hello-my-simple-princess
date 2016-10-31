@@ -390,10 +390,111 @@ r=re.findall('al.+x','subwayaledebugx')      # .+ 代表1到多个字符
 r=re.findall('al.*x','subwayaledebugx')      # .* 代表0到多个字符
 r=re.findall('al.？x','subwayaledebugx')     # .? 代表1个或0个（没有）
 r=re.findall('al(3)x','subwayaledebugx')     # .(3) 可代表3个字符
+r=re.findall('a[bc]d','aubwayabcd')          # a[bc]d表示abd或acd
+r=re.findall('a[a-z]d','subwayatd')          # [a-z]表示a到z的字符都能匹配上
+r=re.findall('a[1-9]d','fva4dd')
+r=re.findall('a[^f]d','aed')                 # [^f]表示不是f的任意字符都能匹配到，^在表示[]里表示非\否  
+r=re.findall('a[\d]d','a6d')                 # [\d]表示任意一个数字
 print(r)
-__________________________
-['aledebugx']
-['aledebugx']
-[]
 
+
+a=re.match('com','comwww.runcomoob')    # 匹配com，只匹配字符串的起始位置，匹配成功返回所在位置
+r=a.span()
+print(r)
+_________________
+(0, 3)
+
+a=re.match('com','comwww.runcomoob').group()    # 得到匹配结果
+print(a)
+__________________
+com
+
+a=re.search('com','www.runcomoob')    # 匹配第一个信息
+print(a)
+
+
+finditer():与findall一样，返回diter对象
+findall:返回列表
+
+
+r=re.sub('g.t','have','i get A,i got B,i gut C')    # 在字符串里面将"g.t"格式替换成'have'
+r1=re.sub('g.t','have','i get A,i got B,i gut C',2)     # 2为设置最大替换次数
+print(r)
+print(r1)
+______________________
+i have A,i have B,i have C
+i have A,i have B,i gut C
+
+
+subn():与sub一样，但会输出替换次数
+r=re.subn('g.t','have','i get A,i got B,i gut C') 
+print(r)
+________________
+('i have A,i have B,i have C', 3)
+
+
+r=re.split('\d+','one 1 two 2 three 3 four 4')     # 按数字进行分割
+print(r)
+_________________
+['one ', ' two ', ' three ', ' four ', '']
+
+
+a=re.search(r'\\com','www.run\comoob').group()    # r声明'\\'为普通字符
+print(a)
+________________
+\com
+
+
+import re
+origin='has xxooxyzabc'
+r=re.match("h\w+",origin)    # \w表示字母，数字，下划线
+print(r.group())             # 获取匹配到的所有结果
+print(r.groups())            # 获取模型中匹配到的分组结果(元祖)
+print(r.groupdict())         # 获取模型中匹配到的分组结果(字典)
+__________________
+has
+()
+{}
+
+
+import re
+origin="has xxooxyzabc"
+r=re.match("h(\w+)",origin)
+print(r.group())
+print(r.groups())
+print(r.groupdict())
+__________________
+has
+('as',)
+{}
+
+
+import re
+origin="hasaabc xxoo halaabc m179"
+r=re.findall("h(\w+)a(ab)c",origin)
+print(r)
+__________________
+[('as', 'ab'), ('al', 'ab')]
+
+
+import re
+origin="hello alex bcd alex lge alex acd 19"
+r=re.split("alex",origin,1)     # 用第一个'alex'进行分割
+print(r)
+_____________________
+['hello ', ' bcd alex lge alex acd 19']
+
+
+import re
+origin="hello alex bcd alex lge alex acd 19"
+r=re.split("a(le)x",origin,1)
+r1=re.split("(alex)",origin,1)
+r2=re.split("(a(le)x)",origin,1)
+print(r)
+print(r1)
+print(r2)
+_________________
+['hello ', 'le', ' bcd alex lge alex acd 19']
+['hello ', 'alex', ' bcd alex lge alex acd 19']
+['hello ', 'alex', 'le', ' bcd alex lge alex acd 19']
 
