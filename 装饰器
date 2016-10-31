@@ -80,6 +80,7 @@ after
 函数名（不加（）），代替整个函数
 
 
+
 返回值
 def outer(func):
   def inner():
@@ -152,3 +153,22 @@ after
 
 双层装饰器（解释从下往上，执行从上而下）
 
+def outer(func):
+    def inner():
+        print("before")
+        func()
+    return inner
+def outer1(func):
+    def inner():
+        func()
+        print("after")
+    return inner
+@outer
+@outer1
+def f1():
+    print("123")
+f1()
+___________________
+before
+123
+after
